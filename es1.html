@@ -5,6 +5,9 @@
     <body>
         <button onclick="(function () {console.log('click da evento')})()">cliccami da evento</button>
         <button onclick="funzioneClick('script')">cliccami da script</button>
+        <div id="div1">
+            <p>NON CLICCARE PER FAVORE</p>
+        </div>
         <button id="btn3">cliccami da listener</button>
         <script>
             // var funzioneClick = function(){
@@ -17,8 +20,28 @@
             }
 
             var bottone3 = document.getElementById("btn3");
-            bottone3.addEventListener("click", function(){funzioneClick("listener")});
-            
+            var colore = false;
+            bottone3.addEventListener("click", 
+                function(){
+
+                    document.getElementById("div1").setAttribute("style", "background-color : pink")
+                    document.getElementById("div1").innerHTML = "<h1>TI AVEVO DETTO DI NON CLICCARE MONA</h1>";
+
+                    funzioneClick("listener");
+                    if (!colore) {
+                        bottone3.setAttribute("style", "background-color : red");
+                        colore = true;
+                    } else {
+                        bottone3.removeAttribute("style");
+                        colore = false;
+                    }
+                }
+            );
+
+
+
+
+
             /*
             in javascript funziona la self declaration and execution ovvero creare la funzione e richiamarla direttamente. 
             |       var funzioneClick = (function(){
