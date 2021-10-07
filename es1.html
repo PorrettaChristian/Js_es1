@@ -3,7 +3,31 @@
         <title>ES 1</title>
     </head>
     <body>
-        <button onclick="function () {
-            console.log('click')}">cliccami</button>
+        <button onclick="(function () {console.log('click da evento')})()">cliccami da evento</button>
+        <button onclick="funzioneClick('script')">cliccami da script</button>
+        <button id="btn3">cliccami da listener</button>
+        <script>
+            // var funzioneClick = function(){
+            //     //operazoni
+            //     console.log("click da script");
+            // };
+
+            var funzioneClick = function(stringa) { // non devo dichiarare il tipo ma solo il nome
+                console.log("click da " + stringa);
+            }
+
+            var bottone3 = document.getElementById("btn3");
+            bottone3.addEventListener("click", function(){funzioneClick("listener")});
+            
+            /*
+            in javascript funziona la self declaration and execution ovvero creare la funzione e richiamarla direttamente. 
+            |       var funzioneClick = (function(){
+            |-- >       console.log("click da script");
+                    })();
+            
+            */
+           // commento --> ctrl k c
+           // decommento --> ctrl k u
+        </script>
     </body>
 </html>
